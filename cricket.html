@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<Title>Cricket Scorecard</Title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Enable this for offline Mode
+		<link href = "css/bootstrap.min.css" rel= "stylesheet">
+		<link href = "css/styles.css" rel="stylesheet">
+		<script src= "js/bootstrap.js"></script>
+		<script src= "js/jquery-1.10.2.min.js"></script>
+ Enable this for offline Mode -->
+
+<!-- Keep enabled for online version -->
+
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/> 		
+		<link rel="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
+		<!-- <link href = "css/bootstrap-responsive.min.css" rel= "stylesheet"> -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		
+ <!-- Keep enabled for online version -->
+
+<!-- All these script functions needs to be put in a separate file for maintainability and as per standards" -->
+<script type="text/javascript">
+		
+		$(document).ready(function(){
+
+			$("#adminLink").hide();
+			$("#emailField").focus();
+		});
+
+</script>
+
+
+<!-- background image code start
+<style>
+	body
+	{
+		background-image: url("img/half.png");
+		background-size: 40%;
+		background-position: right;
+		background-repeat: no-repeat;
+		background-origin: padding-box;
+	}
+
+</style>
+
+background image end -->
+
+</head>
+	<body>
+<!-- Start of Header 
+	<div class = "navbar navbar-inverse navbar-static-top">
+		<div class = "container">
+		 	<a href ="index.htm" class = "navbar-brand"> Cricket Scorecard</a>
+			<button class= "navbar-toggle" data-toggle ="collapse" data-target = ".navHeaderCollapse">
+				<span class = "icon-bar"> </span>
+				<span class = "icon-bar"> </span>
+				<span class = "icon-bar"> </span>
+			</button>
+	 		<div class = "collapse navbar-collapse navHeaderCollapse">
+	 			<ul class = "nav navbar-nav navbar-right">
+					<li class="active"><a href = "index.htm">Sign In</a></li>
+	 				<li>
+	 					<a href = "#" id ="homeTab">Home</a>
+	 				</li>
+	 				<li>
+	 					<a href = "#" >Teams</a>
+	 				</li>
+ 					<li class="dropdown">
+	 					<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown" >History <b class ="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href = "#">ABC</a></li>
+								<li><a href = "#">DEF</a></li>
+								<li><a href = "#">GHI</a></li>
+							</ul>
+	 				</li>
+	 				<li>
+	 					<a href = "#" >Practise</a>
+	 				</li>
+	 				<li>
+	 					<a href = "#" >Guest</a>
+	 				</li>
+	 				<li id="adminLink"><a href = "#" >Admin</a></li>
+	 			</ul>
+	 		</div>
+		</div>
+	</div>
+	
+End of Header -->
+
+<!--Start of nav bar in Bootstrap webpage stype -->
+
+<div class="container navbar-inverse" >
+	<div class = "navbar-header">
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	    </button>
+		<a href="index.htm" class="navbar-brand">Cricket Scorecard</a>
+	</div>
+		<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+	        <ul class="nav navbar-nav navbar-right">
+		        <li class = "active" >
+		          <a href="#">Sign In</a>
+		        </li>
+		        <li>
+		          <a href="#">Home</a>
+		        </li>
+		        <li>
+		          <a href="#/Teams">Teams</a>
+		        </li>
+		        <li>
+		          <a href="#" class = "dropdown-toggle" data-toggle = "dropdown" >History <b class ="caret"></b> </a>
+	          		<ul class="dropdown-menu">
+						<li><a href = "#">April 10</a></li>
+						<li><a href = "#">April 14</a></li>
+						<li><a href = "#">May 05</a></li>
+					</ul>
+		        </li>
+		        <li>
+		          <a href="#">Guest</a>
+		        </li>
+		        <li id="adminLink">
+		          <a href="#">Admin</a>
+		        </li>
+		    </ul>
+		</nav>
+</div>
+
+<!--End of nav bar in Bootstrap webpage stype-->
+
+<br>
+
+<!--The below div is the placeholder for the templates (views) that load during execution -->
+	<div id="maindiv">
+	
+	</div>
+
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Start of Templates -->
+
+<script id="loginTemplate" type="text/x-handlebars">
+		
+				<form class="form-horizontal" role="form" id="login">
+				  	<div class="form-group">
+				  		<div class="col-lg-offset-2 col-lg-8">
+							<label for="inputEmail1" class="col-lg-2 control-label">Email</label>
+							<div class="col-lg-10">
+					  			<input type="email" class="form-control" name="inputEmail1" id ="emailField" placeholder="Email" required />
+							</div>
+						</div>
+				  	</div>
+				  	<div class="form-group">
+				  		<div class="col-lg-offset-2 col-lg-8">
+							<label for="inputPassword1" class="col-lg-2 control-label">Password</label>
+							<div class="col-lg-10">
+					  			<input type="password" class="form-control" name="inputPassword1" placeholder="Password" required />
+							</div>
+				  		</div>
+				  	</div>
+				  	<div class="form-group">
+						<div class="col-lg-offset-2 col-lg-10">
+							<div class="col-lg-10">
+					  			<button type="submit" id="SignInBtn" class="btn btn-success btn-lg btn-block">Sign In</button>
+							</div>
+				  		</div>
+				  	</div>
+				  	<div class="form-group">
+						<div class="col-lg-offset-2 col-lg-10">
+							<div class="col-lg-10">
+					  			<a class="btn btn-primary btn-lg btn-block" href="#/register">Register</a>
+							</div>
+				  		</div>
+				  	</div>
+   				</form>
+</script>
+
+<script id="regTemplate" type="text/x-handlebars-template">
+				<form class="form-horizontal" role="form" id="register">
+				  	<div class="form-group">
+				  		<div class="col-lg-offset-2 col-lg-8">
+							<label for="inputEmail2" class="col-lg-2 control-label">Email</label>
+							<div class="col-lg-10">
+					  			<input type="email" class="form-control" name="inputEmail2" id ="inputEmail2" placeholder="Email" required />
+							</div>
+				  		</div>
+				  	</div>
+				  	<div class="form-group">
+				  		<div class="col-lg-offset-2 col-lg-8">
+							<label for="inputPassword2" class="col-lg-2 control-label">Password</label>
+							<div class="col-lg-10">
+					  			<input type="password" class="form-control" id="inputPassword2" name="inputPassword2" placeholder="Password" required />
+							</div>
+				  		</div>
+				  	</div>
+				  	<div class="form-group">
+				  		<div class="col-lg-offset-2 col-lg-8">
+							<label for="inputPassword3" class="col-lg-2 control-label">Re-Enter Password</label>
+							<div class="col-lg-10">
+					  			<input type="password" class="form-control" id="inputPassword3" name="inputPassword3" placeholder="Re-Enter Password" required />
+							</div>
+				  		</div>
+				  	</div>
+				  	<div class="form-group">
+						<div class="col-lg-offset-2 col-lg-10">
+							<div class="col-lg-10">
+					  			<button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
+							</div>
+				  		</div>
+				  	</div>
+				  	<div class="form-group">
+						<div class="col-lg-offset-2 col-lg-10">
+							<div class="col-lg-10">
+					  			<a class="btn btn-success btn-lg btn-block" href="index.htm">Back to Sign In</a>
+					  		</div>
+				  		</div>
+				  	</div>
+   				</form>
+
+</script>
+
+<script id="home-template" type="text/x-handlebars-template">
+	<div class = "container">
+		<form class="form-horizontal" role="form" id="home">
+			<div class="form-group">
+				<div class="col-lg-offset-2 col-lg-10">
+					<a id="newGameLink" class="btn btn-success btn-lg btn-block" href= "#/chooseTeams">New Game</a>
+					<a id="PractiseLink" class="btn btn-primary btn-lg btn-block" href= "#/PractiseGame">Practise</a>
+					<a id="teamsLink" class="btn btn-warning btn-lg btn-block" href= "#/Teams">Teams</a>
+					<a id="historyLink" class="btn btn-danger btn-lg btn-block" href= "#/History">History</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</script>
+
+<script id="chooseTeams-template" type="text/x-handlebars-template">
+	<div class = "container">
+		<form class="form-horizontal" role="form" id="chooseTeams" >
+			<div class="form-group">
+				<div class="col-lg-offset-2 col-lg-10">
+					<label class="col-lg-2 control-label">Select First team</label>
+					<div class="col-lg-10">
+			  			<select class = "form-control">
+			  				<option></option>
+			  				<option>Mighty Minns</option>
+							<option>SOC</option>
+							<option>CCC</option>
+							<option>Sunrisers</option>
+							<option>Avengers</option>
+			  			</select>	
+			  		</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-lg-offset-2 col-lg-10">
+					<label class="col-lg-2 control-label">Select Second team</label>
+					<div class="col-lg-10">
+			  			<select class = "form-control">
+			  				<option></option>
+			  				<option>Mighty Minns</option>
+							<option>SOC</option>
+							<option>CCC</option>
+							<option>Sunrisers</option>
+							<option>Avengers</option> 	
+			  			</select>	
+			  		</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-lg-offset-2 col-lg-10">
+					<a id="startGameLink" class="btn btn-success btn-lg btn-block" href="#/Toss">Start Game</a>
+				</div>
+			</div> 
+			<div class="form-group">
+				<div class="col-lg-offset-2 col-lg-10">
+					<a id="AddNewTeam" class="btn btn-primary btn-lg btn-block" href= "#/AddTeam">Add New Team</a>
+				</div>
+			</div> 
+			<div class="form-group">
+				<div class="col-lg-offset-2 col-lg-10">
+					<a class="btn btn-warning btn-lg btn-block" href= "#/home-template">Back to Home</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</script>
+
+
+<script id="PractiseGame-template" type="text/x-handlebars-template">
+	<div class = "container">
+		<form class="form-horizontal" role="form" id="PractiseGame" >
+			<div class="form-group">
+				<div class="col-lg-offset-2 col-lg-10">
+					<label class="col-lg-2 control-label">Select First team</label>
+					<div class="col-lg-10">
+			  			<select class = "form-control">
+			  				<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+			  			</select>	
+			  		</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-lg-offset-2 col-lg-10">
+					<label class="col-lg-2 control-label">Select Second team</label>
+					<div class="col-lg-10">
+			  			<select class = "form-control">
+			  				<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+			  			</select>	
+			  		</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-lg-offset-2 col-lg-10">
+					<a id="startGameLink" class="btn btn-primary btn-block">Start Practise Game</a>
+				</div>
+			</div> 
+		</form>
+	</div>
+</script>
+
+
+<script id="Teams-template" type="text/x-handlebars-template">
+	<div class = "container">
+		<form class="form-horizontal" role="form" id="Teams">
+			<div class="form-group">
+				<div class="table-responsive col-lg-offset-2 col-lg-8">
+					<table class = "table table-bordered table-striped table-hover">
+						<tr>
+							<td width = "25%"> 
+								<h4> Mighty Minns </h4>
+							</td>
+							<td width = "20%">
+								<a class="btn btn-success btn-block" href= "#/ShowTeam">View</a>
+							</td>
+							<td width = "20%">
+								<a class="btn btn-warning btn-block" href= "#/EditTeam">Edit</a>
+							</td>	
+							<td width = "20%">
+								<a class="btn btn-danger btn-block" href= "#/DeleteTeam">Delete</a>
+							</td>	
+						</tr>
+						<tr>
+							<td width = "25%"> 
+								<h4> Hyd Hawks </h4>
+							</td>
+							<td width = "20%">
+								<a class="btn btn-success btn-block" href= "#/ShowTeam">View</a>
+							</td>
+							<td width = "20%">
+								<a class="btn btn-warning btn-block" href= "#/EditTeam">Edit</a>
+							</td>	
+							<td width = "20%">
+								<a class="btn btn-danger btn-block" href= "#/DeleteTeam">Delete</a>
+							</td>	
+						</tr>
+						<tr>
+							<td width = "25%"> 
+								<h4> Sunrisers </h4>
+							</td>
+							<td width = "20%">
+								<a class="btn btn-success btn-block" href= "#/ShowTeam">View</a>
+							</td>
+							<td width = "20%">
+								<a class="btn btn-warning btn-block" href= "#/EditTeam">Edit</a>
+							</td>	
+							<td width = "20%">
+								<a class="btn btn-danger btn-block" href= "#/DeleteTeam">Delete</a>
+							</td>	
+						</tr>
+					</table>
+					<a class="btn btn-primary btn-block" href= "#/AddTeam">Add New Team</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</script>
+
+
+<script id="History-template" type="text/x-handlebars-template">
+	<div class = "container">
+		<form class="form-horizontal" role="form" id="History">
+			<div class="form-group">
+				<div class="table-responsive col-lg-offset-2 col-lg-8">
+					<table class = "table table-bordered table-striped table-hover">
+						<tr>
+							<td width = "20%" align ="center"> 
+								<h4> <strong> Date </strong></h4>
+							</td>
+							<td width = "70%" align ="center">
+								<h4><strong>Match</strong></h4>
+							</td>
+						</tr>
+						<tr>
+							<td width = "20%" align ="center"> 
+								<h4> 04/24 </h4>
+							</td>
+							<td width = "70%">
+								<a class="btn btn-block" href= "#/Scorecard"><h4>MM Vs Avengers</h4></a>
+							</td>
+						</tr>
+						<tr>
+							<td width = "20%" align ="center"> 
+								<h4> 04/26 </h4>
+							</td>
+							<td width = "70%">
+								<a class="btn btn-block" href= "#/Scorecard"><h4>MM Vs Sunrisers</h4></a>
+							</td>
+						</tr>
+						<tr>
+							<td width = "20%" align ="center"> 
+								<h4> 05/04 </h4>
+							</td>
+							<td width = "70%">
+								<a class="btn btn-block" href= "#/Scorecard"><h4>MM Vs SOC</h4></a>
+							</td>
+						</tr>
+						<tr>
+							<td width = "20%" align ="center"> 
+								<h4> 05/10 </h4>
+							</td>
+							<td width = "70%">
+								<a class="btn btn-block" href= "#/Scorecard"><h4>MM Vs CCC</h4></a>
+							</td>
+						</tr>
+						<tr>
+							<td width = "20%" align ="center">  
+								<h4> 05/15 </h4>
+							</td>
+							<td width = "70%">
+								<a class="btn btn-block" href= "#/Scorecard"><h4>MM Vs MN Mavericks</h4></a>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</form>
+	</div>
+</script>
+
+
+<script id="Scorecard-template" type="text/x-handlebars-template">
+	<div class = "container">
+		<form class="form-horizontal" role="form" id="Scorecard">
+			<div class="form-group">
+				<div class="table-responsive col-lg-offset-2 col-lg-8">
+					<table class = "table table-bordered table-striped table-hover">
+						<tr>
+							<td width = "20%"> 
+								<h4> <strong> Player </strong></h4>
+							</td>
+							<td width = "10%">
+								<h4> <strong> R </strong></h4>
+							</td>
+							<td width = "10%">
+								<h4> <strong> W </strong></h4>
+							</td>
+							<td width = "10%">
+								<h4> <strong> C </strong></h4>
+							</td>
+							<td width = "10%">
+								<h4> <strong> RO </strong></h4>
+							</td>
+						</tr>
+						<tr>
+							<td width = "20%"> 
+								<h4> Kalyan </h4>
+							</td>
+							<td width = "10%">
+								<h4> 20 </h4>
+							</td>
+							<td width = "10%">
+								<h4> 1 </h4>
+							</td>
+							<td width = "10%">
+								<h4> 2 </h4>
+							</td>
+							<td width = "10%">
+								<h4> 0 </h4>
+							</td>
+						</tr>
+						<tr>
+							<td width = "20%"> 
+								<h4> Jagadeesh </h4>
+							</td>
+							<td width = "10%">
+								<h4> 15 </h4>
+							</td>
+							<td width = "10%">
+								<h4> 2 </h4>
+							</td>
+							<td width = "10%">
+								<h4> 2 </h4>
+							</td>
+							<td width = "10%">
+								<h4> 1 </h4>
+							</td>
+						</tr>
+						<tr>
+							<td width = "20%"> 
+								<h4> Ramki </h4>
+							</td>
+							<td width = "10%">
+								<h4> 12 </h4>
+							</td>
+							<td width = "10%">
+								<h4> 0 </h4>
+							</td>
+							<td width = "10%">
+								<h4> 2 </h4>
+							</td>
+							<td width = "10%">
+								<h4> 0 </h4>
+							</td>
+						</tr>
+						<tr>
+							<td width = "20%"> 
+								<h4> Kusam </h4>
+							</td>
+							<td width = "10%">
+								<h4> 08 </h4>
+							</td>
+							<td width = "10%">
+								<h4> 4 </h4>
+							</td>
+							<td width = "10%">
+								<h4> 1 </h4>
+							</td>
+							<td width = "10%">
+								<h4> 1 </h4>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</form>
+	</div>
+</script>
+
+
+<script id="ShowTeam-template" type="text/x-handlebars-template">
+	<div class = "container">
+		<form class="form-horizontal" role="form" id="ShowTeam">
+			<div class="form-group">
+				<div class="table-responsive col-lg-offset-2 col-lg-8">
+					<table class = "table table-bordered table-striped table-hover">
+						<tr>
+							<td>
+							<h4> Kalyan </h4>
+							</td>
+							<td width="20%">
+							<a class="btn btn-block btn-warning" href-"#">In</a>
+							</td>
+							<td width="20%">
+							<a class="btn btn-block btn-danger" href= "#">Edit</a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+							<h4> Jagadeesh </h4>
+							</td>
+							<td width="20%">
+							<a class="btn btn-block btn-warning" href-"#">In</a>
+							</td>
+							<td width="20%">
+							<a class="btn btn-block btn-danger" href= "#">Edit</a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+							<h4> Ramki </h4>							
+							</td>
+							<td width="20%">
+							<a class="btn btn-block btn-warning" href-"#">In</a>
+							</td>
+							<td width="20%">
+							<a class="btn btn-block btn-danger" href= "#">Edit</a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+							<h4> Kusam </h4>							
+							</td>
+							<td width="20%">
+							<a class="btn btn-block btn-warning" href-"#">In</a>
+							</td>
+							<td width="20%">
+							<a class="btn btn-block btn-danger" href= "#">Edit</a>
+							</td>
+						</tr>						
+					</table>
+					<a class="btn btn-block btn-success" href-"#">Done</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</script>
+
+
+<script id="AddTeam-template" type="text/x-handlebars-template">
+	<div class = "container">
+		<form class="form-horizontal" role="form" id="AddTeam">
+			<div class="form-group">
+				<div class="table-responsive col-lg-offset-2 col-lg-8">
+					<table class = "table table-bordered table-striped table-hover">
+						<tr>
+							<td width="40%">
+								<input type="text" id ="AddPlayerName" class="form-control" placeholder="Enter player name">
+							</td>
+							<td width="35%">
+								<select class="form-control">
+								<option selected="selected">Speciality</option>
+								<option>All Rounder</option>
+								<option>Batsman</option>
+								<option>Keeper</option>
+								<option>Pace Bowler</option>
+								<option>Spinner</option>
+							</td>
+							<td width="15%">
+								<a class="btn btn-block btn-success" id="AddplayerBtn"><strong>+</strong></a>
+							</td>
+						</tr>
+					</table>
+				</div>
+
+			</div>
+			<div>
+			<a class="btn btn-block btn-primary btn-lg btn-block" id="SubmitTeamBtn">Create Team</a>
+			<a class="btn btn-block btn-warning btn-lg btn-block" id="SecondTeamBtn" href= "#/AddTeams" >Add Another Team</a>
+			<a class="btn btn-block btn-success btn-lg btn-block" id="StartGameBtn" href= "#/chooseTeams">Start Game</a>
+			</div>
+		</form>
+	</div>
+</script>
+
+
+<script id="Toss-template" type="text/x-handlebars-template">
+	<div class = "container">
+		<form class="form-horizontal" role="form" id="Toss">
+			<div class="form-group">
+				<div class="table-responsive col-lg-offset-2 col-lg-6">
+					<table class = "table table-bordered table-condensed table-striped table-hover" id="TossContainter">
+						<tr>
+							<td width="28%">
+								<a class="btn btn-default btn-lg btn-block" id="battingImage1" >Batting</a>
+							</td>
+							<td width="30%">
+								<a class="btn btn-success btn-lg btn-block" id="team1" >Mighty Minns</a>
+							</td>
+							<td width="28%">
+								<a class="btn btn-default btn-lg btn-block" id="bowlingImage1" >Bowling</a>
+							</td>
+						</tr>
+						<tr>
+							<td width="28%">
+								<a class="btn btn-default btn-lg btn-block" id="battingImage2" >Batting</a>
+							</td>
+							<td width="30%">
+								<a class="btn btn-primary btn-lg btn-block" id="team2">Sunrisers</a>
+							</td>
+							<td width="28%">
+								<a class="btn btn-default btn-lg btn-block" id="bowlingImage2" >Bowling</a>
+							</td>
+						</tr>
+					</table>
+					<a class="btn btn-danger btn-lg btn-block" id="Go" href="#/Scoring">Play</a>
+				</div>
+			</div>
+		</form>
+ 	</div>
+</script>
+
+
+<script id="Scoring-template" type="text/x-handlebars-template">
+	<div class = "container">
+		<form class="form-horizontal" role="form" id="Scoring">
+			<div class="form-group">
+				<div class="col-lg-10">
+		  			<select class = "form-control">
+		  				<option>Batsman...</option>
+		  				<option>Hari</option>
+						<option>Kalyan</option>
+						<option>Ramki</option>
+						<option>Jaggu</option>
+						<option>Kusam</option>
+		  			</select>	
+			  	</div>
+			  	<div class="col-lg-10">
+		  			<select class = "form-control">
+		  				<option>Bowler...</option>
+		  				<option>Hari</option>
+						<option>Kalyan</option>
+						<option>Ramki</option>
+						<option>Jaggu</option>
+						<option>Kusam</option>
+		  			</select>	
+			  	</div>
+			</div>
+			<div> 
+			<img src="img/ground.jpg" width="100%"/>
+			</div>
+			<div>
+				<div class="table-responsive col-lg-offset-2 col-lg-6">
+					<table class = "table table-condensed table-hover" id="runsScored">
+						<tr>
+							<td>
+								<a class="btn btn-warning" id="zero" >0</a>
+							</td>
+							<td>
+								<a class="btn btn-success" id="one" >1</a>
+							</td>
+							<td>
+								<a class="btn btn-success" id="two" >2</a>
+							</td>
+							<td>
+								<a class="btn btn-success" id="three" >3</a>
+							</td>
+							<td>
+								<a class="btn btn-success" id="four" >4</a>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a class="btn btn-success" id="five" >5</a>
+							</td>
+							<td>
+								<a class="btn btn-success" id="six" >6</a>
+							</td>
+							<td>
+								<a class="btn btn-primary" id="extra">E</a>
+							</td>
+							<td>	
+								<a class="btn btn-primary" id="bye" >B</a>
+							</td>
+							<td>		
+								<a class="btn btn-danger" id="wicket">W</a>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<a class="btn btn-primary btn-lg btn-block" id="summary" href= "#/Scorecard">Summary</a>
+			</div>
+		</form>
+ 	</div>
+</script>
+
+
+
+<!-- End of Templates -->
+
+<script>
+
+$.fn.serializeObject = function()
+    {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function() {
+            if (o[this.name] !== undefined) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
+var MyRouter = Backbone.Router.extend({
+	routes: {
+		'': 'displayLogin',
+		'register': 'register',
+		'chooseTeams': 'chooseTeams',
+		'PractiseGame': 'PractiseGame',
+		'Teams': 'Teams',
+		'History': 'History',
+		'Scorecard': 'Scorecard',
+		'ShowTeam': 'ShowTeam',
+		'AddTeam': 'AddTeam',
+		'Toss': 'Toss',
+		'Scoring': 'Scoring'
+		}
+});
+
+var MyLoginView = Backbone.View.extend({
+	el: '#maindiv',
+	render: function(){
+		var template1 = Handlebars.compile($("#loginTemplate").html());
+		this.$el.html(template1);
+
+	},
+	events: {
+		'submit #login': 'submitLogin'
+	},
+	submitLogin: function(event){
+	var loginData = $(event.currentTarget).serializeObject();
+
+	if(loginData.inputEmail1=="rakesh@gmail.com" && loginData.inputPassword1=="a") {
+					var template2 = Handlebars.compile($("#home-template").html());
+					this.$el.html(template2);
+					return false;
+				}else {
+	  				myRouter.navigate('', {trigger: true});
+				}
+				return false;
+				} 
+		//return false;
+
+		/**		var that = this;
+		console.log("Data  safdsafd issue");
+		var loginData = $(event.currentTarget).serializeObject();
+		var LoginModel = Backbone.Model.extend({
+			url: "/validate"
+		});
+		var loginModel = new LoginModel();
+								
+		loginModel.save(loginData, {
+			success: function(loginModel){
+				console.log("Data saved to the remote serve..."+loginData.get('user'));
+			},
+			error: function(loginModel){
+				console.log("Data issue : in error");
+				myRouter.navigate('register', {trigger: true});
+				that.stopListening(loginModel);
+			}
+		});  **/
+});
+
+var myLoginView  = new MyLoginView();
+
+var myRouter = new MyRouter();
+myRouter.on('route:displayLogin', function(){
+	
+	myLoginView.render();
+});
+
+
+/**
+var MyCollection = Backbone.Collection;
+var MyModel = Backbone.Model.extend({'name': 'Sandeep', 'city' : 'minneapolis', 'age': 30});
+
+ var myCol = new MyCollection();
+var myModel = new MyModel();
+myCol.add([myModel.toJSON(), myModel.toJSON()]); **/
+
+
+
+var MyRegView = Backbone.View.extend({
+	el: '#maindiv',
+	render: function(){
+		var template3 = Handlebars.compile($("#regTemplate").html());
+		this.$el.html(template3);
+
+	},
+	events: {
+		'submit #register': 'submitReg'
+	},
+	submitReg: function(event){
+		var RegData = $(event.currentTarget).serializeObject();
+
+		if(RegData.inputEmail2=="rakesh@gmail.com" && RegData.inputPassword2=="a") {
+			var template2 = Handlebars.compile($("#home-template").html());
+			this.$el.html(template2);
+		}else {
+			myRouter.navigate('', {trigger: true});
+		}
+		return false;
+	}
+});
+var myRegView  = new MyRegView();
+
+myRouter.on('route:register', function(){
+	myRegView.render();
+	$("#inputEmail2").focus();
+});
+
+
+var MyChooseTeamsView = Backbone.View.extend({
+	el: '#maindiv',
+	render: function(){
+		var template4 = Handlebars.compile($("#chooseTeams-template").html());
+		this.$el.html(template4);
+
+	},
+	events: {
+		'submit #startGame': 'chooseTeams'
+	},
+	startGame: function(event){
+		
+	}
+});
+var myChooseTeamsView  = new MyChooseTeamsView();
+
+myRouter.on('route:chooseTeams', function(){
+	myChooseTeamsView.render();
+});
+
+
+
+var MyPractiseGameView = Backbone.View.extend({
+	el: '#maindiv',
+	render: function(){
+		var template5 = Handlebars.compile($("#PractiseGame-template").html());
+		this.$el.html(template5);
+
+	},
+	events: {
+		'submit #PractiseGame': 'PractiseGame'
+	},
+	PractiseGame: function(event){
+		
+	}
+});
+var myPractiseGameView  = new MyPractiseGameView();
+
+myRouter.on('route:PractiseGame', function(){
+	myPractiseGameView.render();
+});
+
+
+var MyTeamsView = Backbone.View.extend({
+	el: '#maindiv',
+	render: function(){
+		var template6 = Handlebars.compile($("#Teams-template").html());
+		this.$el.html(template6);
+
+	},
+	events: {
+		'submit #Teams': 'Teams'
+	},
+	Teams: function(event){
+		
+	}
+});
+var myTeamsView  = new MyTeamsView();
+
+myRouter.on('route:Teams', function(){
+	myTeamsView.render();
+});
+
+
+var MyHistoryView = Backbone.View.extend({
+	el: '#maindiv',
+	render: function(){
+		var template7 = Handlebars.compile($("#History-template").html());
+		this.$el.html(template7);
+
+	},
+	events: {
+		'submit #History': 'History'
+	},
+	History: function(event){
+		
+	}
+});
+var myHistoryView  = new MyHistoryView();
+
+myRouter.on('route:History', function(){
+	myHistoryView.render();
+});
+
+
+var MyScorecardView = Backbone.View.extend({
+	el: '#maindiv',
+	render: function(){
+		var template8 = Handlebars.compile($("#Scorecard-template").html());
+		this.$el.html(template8);
+
+	},
+	events: {
+		'submit #Scorecard': 'Scorecard'
+	},
+	Scorecard: function(event){
+		
+	}
+});
+var myScorecardView  = new MyScorecardView();
+
+myRouter.on('route:Scorecard', function(){
+	myScorecardView.render();
+});
+
+
+var MyShowTeamView = Backbone.View.extend({
+	el: '#maindiv',
+	render: function(){
+		var template9 = Handlebars.compile($("#ShowTeam-template").html());
+		this.$el.html(template9);
+
+	},
+	events: {
+		'submit #ShowTeam': 'ShowTeam'
+	},
+	ShowTeam: function(event){
+		
+	}
+});
+var myShowTeamView  = new MyShowTeamView();
+
+myRouter.on('route:ShowTeam', function(){
+	myShowTeamView.render();
+});
+
+
+
+var MyAddTeamView = Backbone.View.extend({
+	el: '#maindiv',
+	render: function(){
+		var template10 = Handlebars.compile($("#AddTeam-template").html());
+		this.$el.html(template10);
+
+	},
+	events: {
+		'submit #AddTeam': 'AddTeam'
+	},
+	AddTeam: function(event){
+		
+	}
+});
+var myAddTeamView  = new MyAddTeamView();
+
+myRouter.on('route:AddTeam', function(){
+	myAddTeamView.render();
+	$("#AddPlayerName").focus();
+	$("#AddplayerBtn").click(function(){
+/** 
+Write the code here to:
+Record the user input,
+Display it as disabled in the row above. Include an Edit Button.
+create new text field elements for second player addition
+**/
+		 alert( "Added the player" );
+	});
+});
+
+
+
+var MyTossView = Backbone.View.extend({
+	el: '#maindiv',
+	render: function(){
+		var template11 = Handlebars.compile($("#Toss-template").html());
+		this.$el.html(template11);
+
+	},
+	events: {
+		'submit #Toss': 'Toss'
+	},
+	Toss: function(event){
+		
+	}
+});
+var myTossView  = new MyTossView();
+
+myRouter.on('route:Toss', function(){
+	myTossView.render();
+	$("#team1").draggable({ axis: 'x', containment: "#TossContainter"});
+	$("#team2").draggable({ axis: 'x', containment: "#TossContainter"});
+	$("#team1, #team2").draggable(
+			"option", "stack", ".ui-draggable"
+		);
+	$("#battingImage").droppable();
+	$("#bowlingImage").droppable();
+
+	//alert( "Added the player" );
+});
+
+
+
+var MyScoringView = Backbone.View.extend({
+	el: '#maindiv',
+	render: function(){
+		var template12 = Handlebars.compile($("#Scoring-template").html());
+		this.$el.html(template12);
+
+	},
+	events: {
+		'submit #Scoring': 'Scoring'
+	},
+	Scoring: function(event){
+		
+	}
+});
+var myScoringView  = new MyScoringView();
+
+myRouter.on('route:Scoring', function(){
+	myScoringView.render();
+	//alert( "Added the player" );
+});
+
+
+
+
+Backbone.history.start();
+</script>
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,23 @@
+[
+{
+	"id": "2013-11-05-Ember_tree1", 
+	"postTitle": "Implementing a Custom Tree Model in Ember", 
+	"postDate": "2012-05-05",
+	"postShortIntro": "Explaining the Client-side MVC model ...", 
+	"postLongIntro": "We have had a number of very good ..."
+},
+{
+	"id": "2012-05-14-when_did_agile_swallow_pragmatic", 
+	"postTitle": "When Did Agile Swallow Pragmatic ?", 
+	"postDate": "2012-05-14",
+	"postShortIntro": "My question, is simply this: When did Agile ..", 
+	"postLongIntro": "The Agile train have arrived and it has ."
+},
+{
+	"id": "2012-09-03-Combining_Ember_js_with_Netty",
+	"postTitle": "Combining Ember.js with Netty",
+	"postDate": "2012-09-03",
+	"postShortIntro": "Combining Ember.js with Netty ",
+	"postLongIntro": "This blog post is split up into three parts..."
+}
+]
