@@ -1,0 +1,32 @@
+</script id="home/teams" type="text/x-handlebars-template">
+	<div class = "container">
+		<form class="form-horizontal" role="form" id="Teams">
+			<div class="form-group">
+				<div class="table-responsive col-lg-offset-2 col-lg-8">
+					<table class = "table table-bordered table-striped table-hover">
+					{{#each model}}
+						<tr>
+							<td width = "25%"> 
+								<h4> {{teamName}} </h4>
+							</td>
+							<td width = "20%">
+								<a class="btn btn-success btn-block" href= "#/ShowTeam">View</a>
+								
+							</td>
+							<td width = "20%">
+								<a class="btn btn-warning btn-block" href= "#/EditTeam">Edit</a>
+								
+							</td>	
+							<td width = "20%">
+								<a class="btn btn-danger btn-block" href= "#/DeleteTeam">Delete</a>
+								
+							</td>	
+						</tr>
+						{{/each}}
+					</table>
+					<a class="btn btn-primary btn-block" href= "#/AddTeam">Add New Team</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</script>
