@@ -1,4 +1,4 @@
-Cricket.Team = Ember.Model.extend({
+Cricket.Team = DS.Model.extend({
 	teamName: DS.attr('string'),
 	players: DS.hasMany('player'),
 	from: DS.attr('string')

@@ -12,7 +12,8 @@ Cricket.Router.map(function(){
 	this.route('register', {path: '/register'});
 	this.resource('home', {path: '/home'}, function(){
 		this.route('index',{path: '/welcome'});
-		this.resource('teams', {path: '/teams'}, function(){
+		this.route('teams', {path: '/teams'}, function(){
+			this.route('index', {path: '/'});
 			this.route('team', {path: '/:team_id'});
 		});
 		this.route('signoff', {path: '/signoff'});

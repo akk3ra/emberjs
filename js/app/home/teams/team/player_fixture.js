@@ -5,5 +5,5 @@ Cricket.Player = DS.Model.extend({
 Cricket.Player.FIXTURES = [{id: 'ramki', name: 'RamaKrishna Siva', strength: 'Batsman' },
 						   {id: 'kalyan', name: 'Kalyan Komma', strength: 'Batsman'},
 						   {id: 'jagdeesh', name: 'Jagadeesh Ponnam', strength: 'All Rounder'},
-						   {id: 'kusam', name: 'Rakesh Kusam', strength: 'Bowler}
-						   ]
+						   {id: 'kusam', name: 'Rakesh Kusam', strength: 'Bowler'}
+						   ];
