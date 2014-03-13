@@ -1,9 +1,0 @@
-Ember.TEMPLATES["welcome"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
-this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  
-
-
-  data.buffer.push("</script type=\"text/x-handlebars\" id=\"welcome\">\n<div class=\"container navbar-inverse\" >\n	<div class = \"navbar-header\">\n		<button class=\"navbar-toggle\" type=\"button\" data-toggle=\"collapse\" data-target=\".bs-navbar-collapse\">\n	        <span class=\"sr-only\">Toggle navigation</span>\n	        <span class=\"icon-bar\"></span>\n	        <span class=\"icon-bar\"></span>\n	        <span class=\"icon-bar\"></span>\n	    </button>\n		<a href=\"index.htm\" class=\"navbar-brand\">Cricket Scorecard</a>\n	</div>\n		<nav class=\"collapse navbar-collapse bs-navbar-collapse\" role=\"navigation\">\n	        <ul class=\"nav navbar-nav navbar-right\">\n		        <li class = \"active\" >\n		          <a href=\"#\">Sign In</a>\n		        </li>\n		        <li>\n		          <a href=\"#\">Home</a>\n		        </li>\n		        <li>\n		          <a href=\"#/Teams\">Teams</a>\n		        </li>\n		        <li>\n		          <a href=\"#\" class = \"dropdown-toggle\" data-toggle = \"dropdown\" >History <b class =\"caret\"></b> </a>\n	          		<ul class=\"dropdown-menu\">\n						<li><a href = \"#\">April 10</a></li>\n						<li><a href = \"#\">April 14</a></li>\n						<li><a href = \"#\">May 05</a></li>\n					</ul>\n		        </li>\n		        <li>\n		          <a href=\"#\">Guest</a>\n		        </li>\n		        <li id=\"adminLink\">\n		          <a href=\"#\">Admin</a>\n		        </li>\n		    </ul>\n		</nav>\n</div>\n</script>");
-  
-});
