@@ -14,8 +14,8 @@ Cricket.Router.map(function(){
 		this.route('index',{path: '/welcome'});
 		this.route('teams', {path: '/teams'}, function(){
 			this.route('index', {path: '/'});
-			this.route('team', {path: '/:team_id'});
 		});
+		this.route('team', {path: '/team/:team_id'});
 		this.route('signoff', {path: '/signoff'});
 		this.route('guest', {path: '/guest'});
 	});

@@ -1,4 +1,4 @@
-</script id="home/teams" type="text/x-handlebars-template">
+</script id="home/teams" type="text/x-handlebars">
 	<div class = "container">
 		<form class="form-horizontal" role="form" id="Teams">
 			<div class="form-group">
@@ -10,16 +10,20 @@
 								<h4> {{teamName}} </h4>
 							</td>
 							<td width = "20%">
-								<a class="btn btn-success btn-block" href= "#/ShowTeam">View</a>
+							<div class="btn btn-success btn-block">
+								{{#linkTo "home.team" this}} View {{/linkTo}}
+							</div>
 								
 							</td>
 							<td width = "20%">
-								<a class="btn btn-warning btn-block" href= "#/EditTeam">Edit</a>
-								
+							<div class="btn btn-warning btn-block">
+								{{#linkTo "home.team" this}} Edit {{/linkTo}}
+							</div>	
 							</td>	
 							<td width = "20%">
-								<a class="btn btn-danger btn-block" href= "#/DeleteTeam">Delete</a>
-								
+							<div class="btn btn-danger btn-block">
+								{{#linkTo "home.team" this}} Delete {{/linkTo}}
+							</div> 	
 							</td>	
 						</tr>
 						{{/each}}
