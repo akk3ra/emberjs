@@ -5,7 +5,7 @@ Cricket.Team = DS.Model.extend({
 });
 Cricket.Team.FIXTURES = [{id: 'mightyMinns', 
 						teamName: 'Mighty Minns', 
-						players :['ramki','kalyan','jagdeesh','kusam'], 
+						players :['ramki','komma','ponnam','kusam'], 
 						from : 'Minneapolis'},
 						{id: 'hydHawks',
 						teamName: 'Hyderabad Hawks',
@@ -17,5 +17,5 @@ Cricket.Team.FIXTURES = [{id: 'mightyMinns',
 						from : 'Kolkata'},
 						{id: 'sunRisers',
 						teamName: 'Sun Risers',
-						players :['raghavan','sivva','jagdeesh','kusam'], 
+						players :['raghavan','sivva','ponnam','kusam'], 
 						from : 'Chennai'}];
